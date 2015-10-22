@@ -18,3 +18,4 @@ Documentation for the framework can be found on the [Laravel website](http://lar
  01. Purchasing a Domain
  02. Initial Setup
  03. Basic Gulp Housekeeping
+ 04. Initial Scaffolding and Routing
