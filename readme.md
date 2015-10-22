@@ -16,4 +16,4 @@ Documentation for the framework can be found on the [Laravel website](http://lar
 
 ### Tutorials covered so far:
  01. Purchasing a Domain
- 
+ 02. Initial Setup
