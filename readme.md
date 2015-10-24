@@ -20,3 +20,4 @@ Documentation for the framework can be found on the [Laravel website](http://lar
  03. Basic Gulp Housekeeping
  04. Initial Scaffolding and Routing
  05. The Flyer Form
+ 06. Migrations and Models
