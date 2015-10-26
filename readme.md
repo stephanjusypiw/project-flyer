@@ -21,3 +21,4 @@ Documentation for the framework can be found on the [Laravel website](http://lar
  04. Initial Scaffolding and Routing
  05. The Flyer Form
  06. Migrations and Models
+ 07. The Flyers and Photos Relationship
