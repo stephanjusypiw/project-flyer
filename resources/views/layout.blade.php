@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Project Flyer - 2015</title>
+    <link rel="stylesheet" href="/css/libs.css">
     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
+
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -29,5 +31,10 @@
     <div class="container">
         @yield('content')
     </div>
+
+    <script src="/js/libs.js"></script>
+
+    @include('flash')
+
 </body>
 </html>
