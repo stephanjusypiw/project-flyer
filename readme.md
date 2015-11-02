@@ -23,3 +23,4 @@ Documentation for the framework can be found on the [Laravel website](http://lar
  06. Migrations and Models
  07. The Flyers and Photos Relationship
  08. Validating and Persisting Flyers
+ 09. Elegant Flash Messaging
