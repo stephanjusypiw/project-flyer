@@ -18,13 +18,21 @@ class Flyer extends Model
     ];
 
 
-    public function scopeLocatedAt($query, $zip, $street)
+    /**
+     *
+     * Find flyer at the given address
+     *
+     * @param $zip
+     * @param $street
+     * @return mixed
+     */
+    public static function locatedAt($zip, $street)
     {
         // replace the - with white spaces so you can query
         // the database
         $street = str_replace('-', ' ', $street);
 
-        return $query->where(compact('zip', 'street'));
+        return static::where(compact('zip', 'street'))->firstOrFail();
     }
 
     /**
@@ -38,6 +46,14 @@ class Flyer extends Model
     public function getPriceAttribute($price) {
         return '$' . number_format($price);
     }
+
+
+
+    public function addPhoto(Photo $photo)
+    {
+        return $this->photos()->save($photo);
+    }
+
 
     /**
      * A Flyer is composed of many photos
