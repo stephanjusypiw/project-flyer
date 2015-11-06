@@ -24,3 +24,4 @@ Documentation for the framework can be found on the [Laravel website](http://lar
  07. The Flyers and Photos Relationship
  08. Validating and Persisting Flyers
  09. Elegant Flash Messaging
+ 10. Preparing the Flyer Page
