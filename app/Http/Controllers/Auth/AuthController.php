@@ -27,7 +27,7 @@ class AuthController extends Controller
      * Where to redirect upon registration
      * @var string
      */
-    protected $redirectPath = '/flyers/create';
+    protected $redirectPath = '/flyers_uploads/create';
 
     /**
      * Create a new authentication controller instance.

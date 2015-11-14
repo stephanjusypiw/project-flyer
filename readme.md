@@ -27,3 +27,4 @@ Documentation for the framework can be found on the [Laravel website](http://lar
  10. Preparing the Flyer Page
  11. Bulk File Uploads
  12. The Authentication Layer
+ 13. Thumbnails

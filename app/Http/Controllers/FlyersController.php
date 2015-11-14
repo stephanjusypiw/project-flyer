@@ -8,6 +8,7 @@ use App\Photo;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FlyersController extends Controller
 {
@@ -16,7 +17,10 @@ class FlyersController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // everybody must be authenticated to access the methods
+        // except for the show method
+        $this->middleware('auth', ['except' => ['show']]);
+
     }
 
 
@@ -37,8 +41,6 @@ class FlyersController extends Controller
      */
     public function create()
     {
-       // flash()->success('Success!' , 'Your Flyer has been created');
-
         return view('flyers.create');
     }
 
@@ -50,6 +52,7 @@ class FlyersController extends Controller
      */
     public function store(FlyerRequest $request)
     {
+
         Flyer::create($request->all());
 
         flash()->success('Success!' , 'Your Flyer has been created');
@@ -69,7 +72,8 @@ class FlyersController extends Controller
     {
         $flyer = Flyer::locatedAt($zip, $street);
 
-       // dd($flyer);
+
+
         return view('flyers.show', compact('flyer'));
     }
 
@@ -81,19 +85,26 @@ class FlyersController extends Controller
             'photo' =>  'required|mimes:jpg,jpeg,png,bmp'
         ]);
 
-
-
-
-        $photo = Photo::fromForm($request->file('photo'));
+        // call makePhoto
+        $photo = $this->makePhoto($request->file('photo'));
 
         Flyer::locatedAt($zip, $street)->addPhoto($photo);
 
-       // $flyer->photos()->create(['path' => "/flyers/photos/{$name}"]);
-
-
-        return 'Done';
-
     }
+
+    /**
+     *
+     *
+     * @param UploadedFile $file
+     * @return mixed
+     */
+    protected function makePhoto(UploadedFile $file){
+
+        //get new photo object with current name
+        return Photo::named($file->getClientOriginalName())
+                ->move($file);
+    }
+
 
     /**
      * Show the form for editing the specified resource.
