@@ -26,7 +26,13 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                
+
+                @if($signedIn)
+                    <p class="navbar-text navbar-right">
+                        Hello, {{ $user->name }}
+                    </p>
+                @endif
+
             </div><!--/.nav-collapse -->
         </div>
     </nav>
