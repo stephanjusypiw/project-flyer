@@ -29,3 +29,4 @@ Documentation for the framework can be found on the [Laravel website](http://lar
  12. The Authentication Layer
  13. Thumbnails
  14. Guards and Authorization
+ 15. Refactoring Makes Perfect

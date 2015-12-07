@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Flyer;
 // use App\Http\Controllers\MyTraits\AuthorizesUsers;
-use App\Http\Requests\ChangeFlyerRequest;
+use App\Http\Requests\AddPhotoRequest;
 use App\Photo;
 use Illuminate\Http\Request;
 use App\Http\Requests\FlyerRequest;
 use App\Http\Controllers\Controller;
 
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FlyersController extends Controller
 {
@@ -89,20 +88,10 @@ class FlyersController extends Controller
      * @param $street
      * @param ChangeFlyerRequest $request
      */
-    public function addPhoto($zip, $street, ChangeFlyerRequest $request)
+    public function addPhoto($zip, $street, AddPhotoRequest $request)
     {
 
-//        $this->validate($request, [
-//            'photo' =>  'required|mimes:jpg,jpeg,png,bmp'
-//        ]);
-//
-//
-//        if(! $this->userCreatedFlyer($request))
-//        {
-//             return $this->unauthorized($request);
-//        }
-
-        $photo = $this->makePhoto($request->file('photo'));
+        $photo = Photo::fromFile($request->file('photo'));
 
         // fix this.....
        Flyer::locatedAt($zip, $street)->addPhoto($photo);
@@ -111,18 +100,18 @@ class FlyersController extends Controller
 
 
 
-    /**
-     *
-     *
-     * @param UploadedFile $file
-     * @return mixed
-     */
-    protected function makePhoto(UploadedFile $file){
-
-        //get new photo object with current name
-        return Photo::named($file->getClientOriginalName())
-                ->move($file);
-    }
+//    /**
+//     *
+//     *
+//     * @param UploadedFile $file
+//     * @return mixed
+//     */
+//    protected function makePhoto(UploadedFile $file){
+//
+//        //get new photo object with current name
+//        return Photo::named($file->getClientOriginalName())
+//                ->move($file);
+//    }
 
 
     /**
